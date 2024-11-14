@@ -1,80 +1,78 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head itemscope itemtype="http://schema.org/WebSite">
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en">
+<head itemscope itemtype="http://schema.org/WebSite">
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Roadmap Project: Accessible Form UI</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-    <meta name="author" content="" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+  <title>Roadmap Project: Accessible Form UI</title>
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous"
+  />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
 
-    <meta itemprop="name" content="Project" />
-    <meta
-      itemprop="description"
-      content="Content description less than 200 characters"
-    />
-    <link type="text/plain" rel="author" href="humans.txt" />
-    <link rel="stylesheet" href="./css/app.css" />
+  <meta itemprop="name" content="Project" />
+  <meta
+          itemprop="description"
+          content="Content description less than 200 characters"
+  />
+  <link type="text/plain" rel="author" href="humans.txt" />
+  <link rel="stylesheet" href="./css/app.css" />
 
-    <!--[if IE
+  <!--[if IE
       ]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script
-    ><![endif]-->
-  </head>
+><![endif]-->
+</head>
 
-  <body itemscope itemtype="http://schema.org/WebPage">
-    <!-- main start -->
+<body itemscope itemtype="http://schema.org/WebPage">
+<!-- main start -->
+<main role="main">
+  <form class="form" aria-label="Profile Update Form">
+    <fieldset class="form-data-group">
+      <legend>Accessible Form UI:</legend>
 
-    <main role="main">
-      <form class="form">
-        <fieldset class="form-data-group">
-          <legend>Accessible Form UI:</legend>
+      <div class="form-group">
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" aria-required="true"><br><br>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" aria-required="true"><br><br>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" aria-required="true" aria-invalid="false"><br><br>
+      </div>
+      <div class="form-group">
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday" aria-required="true"><br><br>
+      </div>
 
-          <div class="form-group">
-            <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname"><br><br>
-          </div>
-          <div class="form-group">
-            <label for="lname">Last name:</label>
-            <input type="text" id="lname" name="lname"><br><br>
-          </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email"><br><br>
-          </div>
-          <div class="form-group">
-            <label for="birthday">Birthday:</label>
-            <input type="date" id="birthday" name="birthday"><br><br>
-          </div>
+      <input type="submit" value="Update Profile" aria-label="Update Profile">
+    </fieldset>
+    <fieldset class="form-completeness">
+      <div class="form-percentage">
+        <p class="form-percentage-data">65%</p>
+        <p>Profile completeness</p>
+      </div>
+      <ul class="form-checklist">
+        <li class="form-list-item checked" aria-checked="true" role="checkbox">Create Account</li>
+        <li class="form-list-item checked" aria-checked="true" role="checkbox">Update Roadmap Progress</li>
+        <li class="form-list-item" aria-checked="false" role="checkbox">Setup Public Profile</li>
+        <li class="form-list-item" aria-checked="false" role="checkbox">Complete Your First Project</li>
+        <li class="form-list-item" aria-checked="false" role="checkbox">Invite Your Friends</li>
+      </ul>
+    </fieldset>
+  </form>
+</main>
+<!-- main end -->
 
-          <input type="submit" value="Update Profile">
-        </fieldset>
-        <fieldset class="form-completeness">
-          <div class="form-percentage">
-            <p class="form-percentage-data">65%</p>
-            <p>Profile completeness</p>
-          </div>
-          <ul class="form-checklist">
-            <li class="form-list-item checked">Create Account</li>
-            <li class="form-list-item checked">Update Roadmap Progress</li>
-            <li class="form-list-item">Setup Public Profile</li>
-            <li class="form-list-item">Complete Your First Project</li>
-            <li class="form-list-item">Invite Your Friends</li>
-          </ul>
-        </fieldset>
-      </form>
-    </main>
-
-    <!-- main end -->
-
-    <script type="text/javascript" src="../build/app.js"></script>
-  </body>
+<script type="text/javascript" src="../build/app.js"></script>
+</body>
 </html>
