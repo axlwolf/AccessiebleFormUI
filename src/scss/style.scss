@@ -1,0 +1,86 @@
+:root {
+  --dark-blue: #03122f;
+  --midnight-blue: #19305c;
+  --dark-purple: #413b61;
+  --lavender: #ae7dac;
+  --pale-pink: #f3dadf;
+  --peach: #f1916d;
+  --white: #ffffff;
+  --grey: #f0f0f0;
+  --light-grey: #dcdcdc;
+}
+
+.form {
+  font-family: "Roboto", "Helvetica Neue";
+  width: 85vw;
+  border: 2px solid var(--dark-blue) ;
+  border-radius: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5vh auto;
+  padding: 1.5em;
+
+  &-group {
+    display: flex;
+    flex-wrap: wrap;
+    label, input {
+      text-align: left;
+      width: 100%;
+      margin-bottom:  4px;
+    }
+  }
+
+  input {
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  input[type=submit] {
+    margin-top: 1em;
+    width: 100%;
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 1em;
+  }
+
+  &-completeness {
+    text-align: left;
+    margin-left: 2em;
+  }
+
+  &-checklist {
+    background-color: var(--light-grey);
+    width: 100%;
+    color: var(--dark-purple);
+    padding: 1em;
+    border-radius: 12px;
+  }
+
+  &-list-item {
+    padding: 1em;
+    &.checked {
+      color: var(--white);
+      text-decoration: line-through;
+    }
+  }
+
+  &-percentage {
+    text-align: center;
+
+    &-data {
+      border-width: 4px;
+      border-style: solid;
+      border-color: var(--dark-purple);
+      border-bottom-color: var(--lavender);
+      border-left-color: var(--lavender);
+      border-radius: 100%;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      padding-top: 1.3em !important;
+    }
+    p {
+      padding: 0.8em;
+    }
+  }
+}
