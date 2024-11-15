@@ -3,11 +3,32 @@ export const AccessibleFormUI = (() => {
 
   const init = () => {
     console.log("Init AccessibleFormUI");
+    // TODO: Separate canvas logic into its specific method
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+// Dibujar el círculo
+    context.beginPath();
+    context.arc(100, 100, 90, 0, 2 * Math.PI); // (x, y, radio, ángulo inicial, ángulo final)
+    context.fillStyle = '#f0f0f0'; // Color de relleno del círculo
+    context.fill();
+    context.strokeStyle = '#000000'; // Color del borde del círculo
+    context.stroke();
+
+// Añadir el texto dentro del círculo
+    context.fillStyle = '#000000'; // Color del texto
+    context.font = '20px Arial'; // Fuente y tamaño del texto
+    context.textAlign = 'center'; // Alineación del texto
+    context.textBaseline = 'middle'; // Posición del texto
+    context.fillText('0%', 100, 100); // Texto y su posición (x, y)
+
+    renderForm();
     eventHandlers();
   };
 
-  const renderForm = (e) => {
+  const renderForm = () => {
     console.log("Render Form");
+    document.querySelector(".form-percentage-data").innerText = `0%`;
   };
 
   const eventHandlers = () => {
@@ -53,6 +74,7 @@ export const AccessibleFormUI = (() => {
       console.log("Form is valid");
       // Add form submission logic here
     }
+    updateProfileCompleteness();
   };
 
   const handleInput = (e) => {
@@ -89,6 +111,48 @@ export const AccessibleFormUI = (() => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\] )|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   };
+
+  const updateProfileCompleteness = () => {
+    const totalFields = 4;
+    let completedFields = 0;
+    if (document.getElementById('fname').value.trim()) completedFields++;
+    if (document.getElementById('lname').value.trim()) completedFields++;
+    if (document.getElementById('email').value.trim()) completedFields++;
+    if (document.getElementById('birthday').value.trim()) completedFields++;
+    const completeness = Math.round((completedFields / totalFields) * 100);
+    document.querySelector(".form-percentage-data").innerText = `${completeness}%`;
+    drawCanvas(completeness);
+  }
+
+  const drawCanvas = (percentage) => {
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+    // Limpiar el canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Dibujar el círculo
+    context.beginPath();
+    context.arc(100, 100, 90, 0, 2 * Math.PI); // (x, y, radio, ángulo inicial, ángulo final)
+    context.fillStyle = '#f0f0f0'; // Color de relleno del círculo
+    context.fill();
+    context.strokeStyle = 'purple'; // Color del borde del círculo
+    context.stroke();
+
+    // Dibujar el arco que representa el porcentaje completado
+    context.beginPath();
+    context.arc(100, 100, 90, -Math.PI / 2, (2 * Math.PI * (percentage / 100)) - (Math.PI / 2)); // (x, y, radio, ángulo inicial, ángulo final)
+    context.strokeStyle = '#4caf50'; // Color del arco de progreso
+    context.lineWidth = 10;
+    context.stroke();
+
+    // Añadir el texto dentro del círculo
+    context.fillStyle = '#000000'; // Color del texto
+    context.font = '20px Arial'; // Fuente y tamaño del texto
+    context.textAlign = 'center'; // Alineación del texto
+    context.textBaseline = 'middle'; // Posición del texto
+    context.fillText(`${percentage}%`, 100, 100); // Texto y su posición (x, y)
+  }
 
   return {
     init,
